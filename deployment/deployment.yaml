@@ -59,11 +59,24 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 150
+          resources:
+            limits:
+              cpu: '1'
+              memory: 2Gi
+            requests:
+              cpu: '1'
+              memory: 2Gi
           env:
           - name: MYSQL_DATABASE_USER
-            value: 'root'
+            valueFrom:
+              configMapKeyRef:
+                key: MYSQL_DATABASE_USER
+                name: webnodeapp
           - name: MYSQL_DATABASE_PASSWORD
-            value: 'dummy'
+            valueFrom:
+              configMapKeyRef:
+                key: MYSQL_DATABASE_PASSWORD
+                name: webnodeapp
           - name: MYSQL_DATABASE_DB
             value: 'redeem'
           - name: MYSQL_DATABASE_HOST
@@ -95,6 +108,16 @@ spec:
            - containerPort: 3306
           env:
           - name: MYSQL_ROOT_PASSWORD
-            value: 'dummy'
+            valueFrom:
+              configMapKeyRef:
+                key: MYSQL_DATABASE_PASSWORD
+                name: webnodeapp
           - name: MYSQL_HOST
             value: 'mysql'
+          resources:
+            limits:
+              cpu: '1'
+              memory: 2Gi
+            requests:
+              cpu: '1'
+              memory: 2Gi
