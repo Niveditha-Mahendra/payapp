@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  persistence:
+    external: true
+
+services:
+
+  # --- Database---
+
+  mysql:
+    image: mysql
+    environment:
+      hostname: mysql
+      MYSQL_ROOT_PASSWORD: dummy
+      MYSQL_HOST: mysql
+    deploy:
+      replicas: 1
+    ports:
+      - 3306:3306
+  
+  webapp:
+    image: webnodeapp
+    environment:
+      WAIT_HOSTS: mysql:3306
+      MYSQL_DATABASE_USER: root
+      MYSQL_DATABASE_PASSWORD: dummy
+      MYSQL_DATABASE_DB: redeem
+      MYSQL_DATABASE_HOST: localhost
+    deploy:
+      replicas: 1
+    ports:
+      - 8080:8080

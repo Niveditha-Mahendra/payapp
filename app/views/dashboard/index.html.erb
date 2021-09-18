@@ -1,0 +1,82 @@
+<nav class="navbar navbar-dark">
+  <a class="navbar-brand"><%= image_tag("logo.png", height: '32px') %></a>
+  <form class="form-inline">
+    <div class="navbarBackLink">
+      <div>
+        <a href="#">
+          <div class="user">
+            <div class="user-photo">
+              Te
+            </div>
+            <div class="username">
+              Test
+            </div>
+          </div>
+        </a>
+      </div>
+      <div><a href="#"><i class="icon-0-28 icon-notifications"></i></a></div>
+      <div><a href="#"><i class="icon-0-28 icon-envelope"></i></a></div>
+      <div><a href="#"><i class="icon-0-28 icon-logout"></i></a></div>
+  </form>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Redeem Service</h1>
+    <p class="lead">Redeem your money</p>
+  </div>
+</div>
+
+<div class="card-deck" style="margin-bottom: 100px;">
+  <div class="card text-centered">
+    <div class="image-card-head-one"></div>
+    <div class="card-body">
+      <h5 class="card-title">Redeem Amazon</h5>
+      <p class="card-text">Get a 5eur Amazon voucher from your Community bonus.</p>
+      <br/>
+      <%= form_with(url: "/redeem", method: "post") do %>
+        <%= hidden_field_tag "user", "#{@user}" %>
+        <%= hidden_field_tag "bonus_id", 1 %>
+        <%= submit_tag("Redeem", class: "btn btn-block btn-warning") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card text-centered">
+    <div class="image-card-head-two"></div>
+    <div class="card-body">
+      <h5 class="card-title">Discount on your commissions</h5>
+      <p class="card-text">Use your bonus to reduce your banking comissions on transactions.</p>
+      <br/>
+      <%= form_with(url: "/redeem", method: "post") do %>
+        <%= hidden_field_tag "user", "#{@user}" %>
+        <%= hidden_field_tag "bonus_id", 2 %>
+        <%= submit_tag("Test redeem", class: "btn btn-block btn-dark") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card text-centered">
+    <div class="image-card-head-three"></div>
+    <div class="card-body">
+      <h5 class="card-title">Cash bonus</h5>
+      <div class="card-text">
+      <%= form_with(url: "/redeem", method: "post") do %>
+        <%= label_tag(:amount, "How much money would you like to retrieve to your current account:") %>
+        <%= number_field_tag :amount, nil, placeholder: "Amount here...", class: "cash-bonus-input" %>
+        <%= hidden_field_tag "user", "#{@user}" %>
+        <%= hidden_field_tag "bonus_id", 3 %>
+        <%= submit_tag("Cashback!", class: "btn btn-block btn-primary") %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> <%= value %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+

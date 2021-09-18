@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: Service
+metadata: 
+   name: webnodeapp
+spec:
+   ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+   type: NodePort
+   selector:
+      app: webnodeapp
+
+---
+
+apiVersion: v1
+kind: Service
+metadata: 
+   name: mysql
+spec:
+   ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+   type: NodePort
+   selector:
+      app: webnodeapp
+
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webnodeapp
+  labels:
+    app: webnodeapp
+spec:
+  replicas: 1
+  selector:
+        matchLabels:
+          app: webnodeapp
+  template:
+    metadata:
+      name: webnodeapp
+      labels:
+        app: webnodeapp
+    spec:
+      containers:
+        - name: webnodeapp
+          image: webnodeapp:latest
+          imagePullPolicy: "Always"
+          ports:
+           - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            failureThreshold: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 150
+          env:
+          - name: MYSQL_DATABASE_USER
+            value: 'root'
+          - name: MYSQL_DATABASE_PASSWORD
+            value: 'dummy'
+          - name: MYSQL_DATABASE_DB
+            value: 'redeem'
+          - name: MYSQL_DATABASE_HOST
+            value: 'mysql'
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+        matchLabels:
+          app: mysql
+  template:
+    metadata:
+      name: mysql
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest
+          imagePullPolicy: "Always"
+          ports:
+           - containerPort: 3306
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: 'dummy'
+          - name: MYSQL_HOST
+            value: 'mysql'

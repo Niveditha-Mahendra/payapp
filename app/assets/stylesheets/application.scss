@@ -1,0 +1,275 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto:500|Roboto+Condensed&display=swap');
+
+@font-face {
+    font-family: "fontello";
+    src: url("fontello.woff2") format('woff2'),
+    url("fontello.ttf") format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logout:before {
+    content: "\e800";
+}
+
+.icon-notifications:before {
+    content: "\e83b";
+}
+
+.icon-envelope:before {
+    content: "\e802";
+}
+
+body{
+    background-color: #F2F2F2;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.2px;
+}
+
+.navbar-dark{
+    background: #000;
+    padding: 0px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 48px;
+}
+
+.navbarBackLink{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100%;
+}
+
+.navbarBackLink div a{
+    color: #FFFFFF88;
+    text-decoration: none;
+}
+
+.navbarBackLink div a:hover{
+    color: #FFFFFF;
+}
+
+.card-title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+.card-deck{
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.card{
+    box-shadow: 2px 2px 10px rgb(161, 161, 161);
+    border-radius: 5px;
+    margin: 20px;
+    min-width: 400px; 
+    max-width: 450px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-text{
+    color: #777;
+}
+
+.image-card-head-one{
+    height: 250px;
+    background: url('/assets/amazon.png');
+    background-position: 50%;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+.image-card-head-two{
+    height: 250px;
+    background: url('/assets/backgroung.png');
+    background-position: 50%;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+.image-card-head-three{
+    height: 250px;
+    background: url('/assets/coins.png');
+    background-position: 50%;
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+.btn-warning{
+    padding: 10px;
+    border-radius: 5px;
+    background: #FF9900;  
+    background: -webkit-linear-gradient(to right, #FFD200, #FF9900);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFD200, #FF9900); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.btn-dark{
+    padding: 10px;
+    border-radius: 5px;
+    background: #303840; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.btn-primary{
+    background: #007BFF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #007BFF, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #007BFF, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.cash-bonus-input{
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #007BFF;
+    width: 100%;
+    margin: 5px 0px 20px 0px;
+}
+
+.jumbotron{
+    background-color: #F2F2F2;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
+
+.display-4{
+    font-family: 'Roboto', sans-serif;
+    color: #000;
+    font-size: 2.5rem;
+}
+
+.lead{
+    color: #777;
+    margin-bottom: 0px !important;
+}
+
+.form-inline{
+    border-left: 1px solid #FFFFFF88;
+}
+
+.navbarBackLink div{
+    border-right: 1px solid #FFFFFF88;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0.6rem;
+}
+
+.icon-0-28{
+    font-size: 1.6429rem;
+}
+
+.user{
+    border-right: none !important;
+    padding: 0px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-photo{
+    background: #DACABD;
+    width: 34.28px;
+    height: 34.28px !important;
+    border-radius: 20px;
+    border-right: none !important;
+    padding: 0px !important;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-right: 6px !important;
+    font-size: 1rem;
+    color: #fff !important;
+}
+
+.username{
+    text-align: center;
+    border-right: none !important;
+    padding: 0px !important;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 575px) {
+    .card{
+        box-shadow: 2px 2px 10px rgb(161, 161, 161);
+        border-radius: 5px;
+        margin: 20px;
+        min-width: 90%; 
+        max-width: 90%;
+    }
+
+    .card-deck{
+        flex-flow: wrap !important;
+    }
+
+    .navbar-dark{
+        height: 45px;
+        padding: 0px 0px 0px 2%;
+    }
+
+    .navbar-brand img{
+        height: 25px;
+    }
+
+    .navbar-brand{
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 330px){
+    .navbar-brand img{
+        height: 20px;
+    }
+}

@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: redeem_dummy_development
+
+test:
+  <<: *default
+  database: redeem_dummy_test
+
+production:
+  url: <%= ENV.fetch('REDEEM_DUMMY_DATABASE_URL') { "mysql2://root@localhost:3306/redeem_dummy_development" } %>
+
+# production:
+#   <<: *default
+#   database: redeem_dummy_production
+#   username: redeem_dummy
+#   password: <%= ENV['REDEEM_DUMMY_DATABASE_PASSWORD'] %>
